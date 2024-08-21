@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { InputNewCategory } from './InputNewCategory';
 
 export const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['Demon Slayer']);
+
+  const [categories, setCategories] = useState(['Demon Slayer', 'Blue Lock']);
   
   return (
     <>
@@ -9,16 +11,14 @@ export const GifExpertApp = () => {
       <h1>GifExpertApp</h1>
 
       <ol>
-        <li>123</li>
-        <li>abc</li>
-        <li>xyz</li>
-        {categories.map((categorie, index) => {
-          return (<li key={index}>{categorie}</li>);
+        {categories.map((category, index) => {
+          return (<li key={index}>{category}</li>);
         })}
       </ol>
       {/* Input (componente independiente) */}
-
+      <InputNewCategory listCategories={categories} setCategories={setCategories}/>
       {/* Listado de gifs */}
+      
         {/* GifItem */}
     </>
   )
