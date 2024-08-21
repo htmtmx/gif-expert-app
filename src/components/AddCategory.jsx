@@ -1,17 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 
-export const InputNewCategory = ({ listCategories, setCategories }) => {
+export const AddCategory = ({ listCategories, setCategories }) => {
   
+  const [newValue, setNewValue] = useState('');
+
   const onAddCategory = (newCategory) => {
     if (!listCategories.includes(newValue) && newCategory.length >=4) {
-      setCategories([...listCategories, newCategory]);
+      setCategories([newCategory, ...listCategories]);
     } else {
       alert('Ese elemento ya existe en la lista');
     }
   };
-
-  const [newValue, setNewValue] = useState('');
 
   const handleChange = (e) => {
     setNewValue(e.target.value);
@@ -27,6 +27,7 @@ export const InputNewCategory = ({ listCategories, setCategories }) => {
     <>
       <input
         type="text"
+        placeholder='Buscar'
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         required

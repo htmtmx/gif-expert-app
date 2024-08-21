@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { InputNewCategory } from './InputNewCategory';
+import { AddCategory as AddCategory } from './components/AddCategory';
 
 export const GifExpertApp = () => {
 
@@ -10,14 +10,14 @@ export const GifExpertApp = () => {
       {/* Titulo de la app */}
       <h1>GifExpertApp</h1>
 
+      {/* Input (componente independiente) */}
+      <AddCategory listCategories={categories} setCategories={setCategories}/>
+      {/* Listado de gifs */}
       <ol>
         {categories.map((category, index) => {
           return (<li key={index}>{category}</li>);
         })}
       </ol>
-      {/* Input (componente independiente) */}
-      <InputNewCategory listCategories={categories} setCategories={setCategories}/>
-      {/* Listado de gifs */}
       
         {/* GifItem */}
     </>
