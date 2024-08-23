@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 export const AddCategory = ({ listCategories, setCategories }) => {
   
-  const [newValue, setNewValue] = useState('');
+  const [inputValue, setNewValue] = useState('');
 
   const onAddCategory = (newCategory) => {
-    if (!listCategories.includes(newValue) && newCategory.length >=4) {
+    if (!listCategories.includes(inputValue) && newCategory.length >=4) {
       setCategories([newCategory, ...listCategories]);
     } else {
       alert('Ese elemento ya existe en la lista');
@@ -19,7 +19,7 @@ export const AddCategory = ({ listCategories, setCategories }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      onAddCategory(newValue);
+      onAddCategory(inputValue);
     }
   };
 
@@ -27,12 +27,13 @@ export const AddCategory = ({ listCategories, setCategories }) => {
     <>
       <input
         type="text"
-        placeholder='Buscar'
+        value={inputValue}
+        placeholder="Buscar gifs"
         onChange={handleChange}
         onKeyDown={handleKeyDown}
         required
       />
-      <button onClick={() => onAddCategory(newValue)}>Agregar</button>
+      <button onClick={() => onAddCategory(inputValue)}>Agregar</button>
     </>
   )
 }
