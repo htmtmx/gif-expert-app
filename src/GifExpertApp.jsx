@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import { AddCategory as AddCategory } from './components/AddCategory';
+import { AddCategory } from './components/AddCategory';
 
 export const GifExpertApp = () => {
 
   const [categories, setCategories] = useState(['Demon Slayer', 'Blue Lock']);
-  
+
   return (
     <>
       {/* Titulo de la app */}
       <h1>GifExpertApp</h1>
 
       {/* Input (componente independiente) */}
-      <AddCategory listCategories={categories} setCategories={setCategories}/>
+      <AddCategory setCategories={setCategories} />
+
       {/* Listado de gifs */}
       <ol>
         {categories.map((category, index) => {
@@ -19,7 +20,7 @@ export const GifExpertApp = () => {
         })}
       </ol>
       
-        {/* GifItem */}
+      {/* #TODO: GifItem */}
     </>
   )
 }
