@@ -6,6 +6,7 @@ export const GifExpertApp = () => {
     const [categories, setCategories] = useState(['Demon Slayer', 'Blue Lock']);
 
     const onNewCategory = (newCategory) => {
+        if (categories.includes(newCategory)) return;
         setCategories(prevCategories => [newCategory, ...prevCategories]);
     };
 
