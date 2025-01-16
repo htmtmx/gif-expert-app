@@ -3,44 +3,49 @@ import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
-  
-  const [inputValue, setInputValue] = useState('');
 
-  const showAlert = () => {
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Ya existe ese elemento!',
-    });
-  };
+    const [inputValue, setInputValue] = useState('');
 
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
+    const showAlert = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ya existe ese elemento!',
+        });
+    };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      onNewCategory(inputValue) ? setInputValue('') : showAlert();
-    }
-  };
+    const onChange = (e) => {
+        setInputValue(e.target.value);
+    };
 
-  return (
-    <>
-      <input
-        type="text"
-        value={inputValue}
-        placeholder="Buscar gifs"
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-        required
-      />
+    const onKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (inputValue.trim().length <= 1) return;
+            onNewCategory(inputValue.trim());
+            setInputValue('');
+        }
+    };
 
-      <button onClick={() => onNewCategory(inputValue) ? setInputValue('') : showAlert()}>Agregar</button>
-    </>
-  );
+    return (
+        <>
+            <input
+                type="text"
+                value={inputValue}
+                placeholder="Buscar gifs"
+                onChange={onChange}
+                onKeyDown={onKeyDown}
+                required
+            />
+
+            <button onClick={() => {
+                onNewCategory(inputValue)
+                setInputValue('')
+            }}>Agregar</button>
+        </>
+    );
 };
 
 AddCategory.propTypes = {
-  onNewCategory: PropTypes.func.isRequired,
+    onNewCategory: PropTypes.func.isRequired,
 };
