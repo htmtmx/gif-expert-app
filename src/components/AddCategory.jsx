@@ -20,6 +20,7 @@ export const AddCategory = ({ onNewCategory }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       onNewCategory(inputValue) ? setInputValue('') : showAlert();
     }
   };

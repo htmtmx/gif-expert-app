@@ -26,8 +26,8 @@ export const GifExpertApp = () => {
 
       {/* Listado de gifs */}
       <ol>
-        {categories.map((category, index) => {
-          return (<li key={index}>{category}</li>);
+        {categories.map((category) => {
+          return (<li key={category}>{category}</li>);
         })}
       </ol>
       
