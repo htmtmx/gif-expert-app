@@ -1,18 +1,9 @@
 import { useState } from 'react';
-import Swal from 'sweetalert2';
 import PropTypes from 'prop-types';
 
 export const AddCategory = ({ onNewCategory }) => {
 
     const [inputValue, setInputValue] = useState('');
-
-    const showAlert = () => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Ya existe ese elemento!',
-        });
-    };
 
     const onChange = (e) => {
         setInputValue(e.target.value);
