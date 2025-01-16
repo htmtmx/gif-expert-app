@@ -3,35 +3,30 @@ import { AddCategory } from './components/AddCategory';
 
 export const GifExpertApp = () => {
 
-  const [categories, setCategories] = useState(['Demon Slayer', 'Blue Lock']);
-  
-  const onNewCategory = (inputValue) => {
-    if (!categories.includes(inputValue) && inputValue.trim().length >= 4) {
-      setCategories(prevCategories => [inputValue, ...prevCategories]);
-      return true;
-    } else {
-      return false;
-    }
-  };
+    const [categories, setCategories] = useState(['Demon Slayer', 'Blue Lock']);
 
-  return (
-    <>
-      {/* Titulo de la app */}
-      <h1>GifExpertApp</h1>
+    const onNewCategory = (newCategory) => {
+        setCategories(prevCategories => [newCategory, ...prevCategories]);
+    };
 
-      {/* Input (componente independiente) */}
-      <AddCategory
-        onNewCategory={inputValue => onNewCategory(inputValue)}
-      />
+    return (
+        <>
+            {/* Titulo de la app */}
+            <h1>GifExpertApp</h1>
 
-      {/* Listado de gifs */}
-      <ol>
-        {categories.map((category) => {
-          return (<li key={category}>{category}</li>);
-        })}
-      </ol>
-      
-      {/* #TODO: GifItem */}
-    </>
-  )
+            {/* Input (componente independiente) */}
+            <AddCategory
+                onNewCategory={onNewCategory}
+            />
+
+            {/* Listado de gifs */}
+            <ol>
+                {categories.map((category) => {
+                    return (<li key={category}>{category}</li>);
+                })}
+            </ol>
+
+            {/* #TODO: GifItem */}
+        </>
+    )
 }
