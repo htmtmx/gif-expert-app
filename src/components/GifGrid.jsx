@@ -7,9 +7,13 @@ import "./AddCategory.css";
 
 export const GifGrid = ({ category }) => {
     const [gifs, setGifs] = useState([]);
+    const getImages = async () => {
+        const gifList = await getGifs(category);
+        setGifs(gifList);
+    }
     
     useEffect(() => {
-        getGifs(category).then(data=> setGifs(data));
+        getImages();
     }, []);
     
     return (
