@@ -21,8 +21,8 @@ export const GifGrid = ({ category }) => {
             <h3>{category}</h3>
             <div className='container_gifs'>
                 {
-                    gifs.map(({ title, images }) =>
-                        <GifItem key={title + Math.floor(Math.random() * 10).toString()} title={title} url={ images.original.url} />
+                    gifs.map((image) =>
+                        <GifItem key={image.id} {...image} />
                     )
                 }
             </div>
