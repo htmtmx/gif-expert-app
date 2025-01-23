@@ -1,22 +1,15 @@
-import { getGifs } from '../helpers/getGifs';
 import { GifItem } from './GifItem';
-import { useEffect, useState } from 'react';
+import { useFetchGifs } from '../hooks/useFetchGifs';
 import PropTypes from 'prop-types'
 
 import "./AddCategory.css";
 
 export const GifGrid = ({ category }) => {
-    const [gifs, setGifs] = useState([]);
-    const getImages = async () => {
-        const gifList = await getGifs(category);
-        setGifs(gifList);
-    }
-    
-    useEffect(() => {
-        getImages();
-    }, []);
+
+    const { gifs, isLoading } = useFetchGifs(category);
     
     return (
+        isLoading ? <h3>Loading...</h3> :
         <section>
             <h3>{category}</h3>
             <div className='container_gifs'>
