@@ -21,7 +21,7 @@ export const GifGrid = ({ category }) => {
             </div>
         </section>
   )
-}
+};
 
 GifGrid.propTypes = {
     category: PropTypes.string.isRequired,

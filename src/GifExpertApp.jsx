@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { AddCategory, GifGrid } from './components';
 
 export const GifExpertApp = () => {
 
     const [categories, setCategories] = useState([]);
 
-    const onNewCategory = (newCategory) => {
-        if (categories.includes(newCategory)) return;
-        setCategories(prevCategories => [newCategory, ...prevCategories]);
-    };
+    const onNewCategory = useCallback((rawCategory) => {
+        const newCategory = rawCategory.trim();
+        if (newCategory.length <= 1) return;
+
+        setCategories((prevCategories) => {
+            if (prevCategories.includes(newCategory)) return prevCategories;
+            return [newCategory, ...prevCategories];
+        });
+    }, []);
 
     return (
         <>
